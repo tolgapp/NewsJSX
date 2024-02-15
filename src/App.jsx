@@ -1,14 +1,15 @@
-import './App.css'
-import FetchData from './components/FetchData.jsx'
+import "./index.css";
+import FetchData from "./components/FetchData.jsx";
+import Nav from "./components/Nav.jsx";
 
 function App() {
-
   return (
-    <>
-     <h1>NewsJSX</h1>
-     <FetchData />
-    </>
-  )
+    <div className="app">
+      <Nav />
+      <FetchData />
+    </div>
+  );
 }
 
-export default App
+
+export default App;

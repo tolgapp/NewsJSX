@@ -1,8 +1,11 @@
 import "./index.css";
-import FetchData from "./components/FetchData.jsx";
+import FetchData from "./components/fetchData.jsx";
 import Nav from "./components/Nav.jsx";
 
 function App() {
+
+
+  
   return (
     <div className="app">
       <Nav />
@@ -10,6 +13,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

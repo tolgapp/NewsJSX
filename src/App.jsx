@@ -1,16 +1,21 @@
 import "./index.css";
 import FetchData from "./components/fetchData.jsx";
+import { useState } from "react";
 import Nav from "./components/Nav.jsx";
 
 function App() {
-
-
   
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <div className="app">
-      <Nav />
-      <FetchData />
-    </div>
+    <>
+      <Nav setSearch={setSearch} handleSearch={handleSearch} />
+      <FetchData search={search} />
+    </>
   );
 }
 

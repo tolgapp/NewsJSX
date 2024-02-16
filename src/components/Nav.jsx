@@ -1,13 +1,6 @@
-import { useState } from "react";
 import newsLight from "/images/news-light.png";
 
-const Nav = (props) => {
-  const [search, setSearch] = useState('');
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    props.search;
-  };
+const Nav = ({handleSearch, setSearch}) => {
 
   return (
     <nav className="nav flex sticky bg-black top-0 w-full border justify-between p-4">

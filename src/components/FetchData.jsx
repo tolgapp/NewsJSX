@@ -1,59 +1,59 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import {useSearchFetch} from "../context/Search.jsx"
+import { useSearchFetch } from "../context/Search.jsx";
+
+const api = import.meta.env.VITE_API_KEY;
 
 const FetchData = () => {
   const [news, setNews] = useState([]);
   const inputRef = useRef(null);
 
-  const {search} = useSearchFetch();
+  const { search } = useSearchFetch();
 
   // Preload with Apple News
   useEffect(() => {
     axios
       .get(
-        "https://newsapi.org/v2/everything?q=apple&sortBy=publishedAt&pageSize=40&language=de&apiKey=1b17cead30934354ae3e637d14a92ba6"
+        `https://newsapi.org/v2/everything?q=apple&sortBy=publishedAt&pageSize=40&language=de&apiKey=${api}`
       )
       .then((response) => setNews(response.data.articles));
   }, []);
 
-
-  
+  // user input with search value from the nav component
   useEffect(() => {
     const fetchData = async (e) => {
       if (search && (e.key === "Enter" || e.type === "submit")) {
         const response = await axios.get(
-          `https://newsapi.org/v2/everything?q=${search}&language=de&apiKey=1b17cead30934354ae3e637d14a92ba6`
+          `https://newsapi.org/v2/everything?q=${search}&language=de&apiKey=${api}`
         );
         setNews(response.data.articles);
         localStorage.setItem("data", JSON.stringify(news));
       }
     };
-  
-    // Binden Sie die fetchData-Funktion an das onSubmit-Event oder an das keydown-Event  
+
+    // Binden der fetchData-Funktion an das onSubmit-Event oder an das keydown-Event
     if (inputRef.current) {
       inputRef.current.addEventListener("keydown", fetchData);
     }
-  
+
     const formElement = document.querySelector("form");
-  
+
     if (formElement) {
       formElement.addEventListener("submit", fetchData);
     }
-  
-    // Entfernen Sie die Event-Listener beim Unmounten der Komponente
+
+    // Entfernen der Event-Listener beim Unmounten der Komponente
     return () => {
       if (inputRef.current) {
         inputRef.current.removeEventListener("keydown", fetchData);
       }
-  
+
       if (formElement) {
         formElement.removeEventListener("submit", fetchData);
       }
     };
   }, [search]);
-
 
   const removeAuthorPrefix = (author) => {
     if (author?.startsWith("Von ") || author?.startsWith("von ")) {
@@ -62,7 +62,6 @@ const FetchData = () => {
       return author;
     }
   };
-
 
   return (
     <>

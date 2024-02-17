@@ -1,10 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+import {useSearchFetch} from "../context/Search.jsx"
 
-const FetchData = ({ search }) => {
+const FetchData = () => {
   const [news, setNews] = useState([]);
   const inputRef = useRef(null);
+
+  const {search} = useSearchFetch();
 
   // Preload with Apple News
   useEffect(() => {
@@ -13,13 +16,10 @@ const FetchData = ({ search }) => {
         "https://newsapi.org/v2/everything?q=apple&sortBy=publishedAt&pageSize=40&language=de&apiKey=1b17cead30934354ae3e637d14a92ba6"
       )
       .then((response) => setNews(response.data.articles));
-    localStorage.setItem("data", JSON.stringify(news));
-    console.log("Data fetched and stored in local storage:", news);
   }, []);
 
 
   
-
   useEffect(() => {
     const fetchData = async (e) => {
       if (search && (e.key === "Enter" || e.type === "submit")) {

@@ -1,6 +1,14 @@
 import newsLight from "/images/news-light.png";
+import { useSearchFetch } from "../context/Search";
 
-const Nav = ({handleSearch, setSearch}) => {
+const Nav = () => {
+
+  const { setSearch } = useSearchFetch();
+
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <nav className="nav flex sticky bg-black top-0 w-full border justify-between p-4">
@@ -21,9 +29,12 @@ const Nav = ({handleSearch, setSearch}) => {
           className="p-2 ml-1 bg-white rounded-lg text-black"
         />
       </form>
+
     </nav>
   );
 };
+
+
 
 export default Nav;
 

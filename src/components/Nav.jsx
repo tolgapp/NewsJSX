@@ -11,16 +11,16 @@ const Nav = () => {
   };
 
   return (
-    <nav className="nav flex sticky bg-black top-0 w-full border justify-between p-4">
+    <nav className="nav flex sticky bg-slate-900 top-0 w-full justify-between p-8">
       <div className="flex place-items-center">
         <img className="size-10" src={newsLight} alt="News icon" />
-        <h1 className="pl-2">NewsJSX</h1>
+        <h1 className="pl-2 font-mono">NewsJSX</h1>
       </div>
       <form onSubmit={handleSearch}>
         <input
           className="w-80 p-2 rounded-lg text-black"
           type="text"
-          placeholder="Tesla? ChatGPT? .. search everything"
+          placeholder="Tesla? ChatGPT? .. everything!"
           onInput={(e) => setSearch(e.target.value)}
         />
         <input
@@ -29,13 +29,9 @@ const Nav = () => {
           className="p-2 ml-1 bg-white rounded-lg text-black"
         />
       </form>
-
     </nav>
   );
 };
 
 
-
 export default Nav;
-
-

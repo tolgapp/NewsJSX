@@ -66,11 +66,11 @@ const FetchData = () => {
   return (
     <>
       {news.map((elt) => (
-        <section key={uuidv4()}>
+        <section key={uuidv4()} className="p-2">
           {elt.urlToImage !== null ? (
             <div
               key={uuidv4()}
-              className="flex justify-between p-8 h-80 place-items-center text-left w-full rounded-sm"
+              className="flex justify-between p-8 h-80 place-items-center text-left w-6/7 border m-1 rounded-xl"
             >
               <img
                 className="h-64 w-80"

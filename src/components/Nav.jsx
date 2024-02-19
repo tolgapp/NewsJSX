@@ -1,10 +1,15 @@
 import newsLight from "/images/news-light.png";
 import { useSearchFetch } from "../context/Search";
+import { useEffect, useRef } from "react";
 
 const Nav = () => {
 
+  const inputRef = useRef(null);
   const { setSearch } = useSearchFetch();
 
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -18,6 +23,7 @@ const Nav = () => {
       </div>
       <form onSubmit={handleSearch}>
         <input
+          ref={inputRef}
           className="w-80 p-2 rounded-lg text-black"
           type="text"
           placeholder="Tesla? ChatGPT? .. everything!"

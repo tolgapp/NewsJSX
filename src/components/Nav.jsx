@@ -3,7 +3,6 @@ import { useSearchFetch } from "../context/Search";
 import { useEffect, useRef } from "react";
 
 const Nav = () => {
-
   const inputRef = useRef(null);
   const { setSearch } = useSearchFetch();
 
@@ -13,10 +12,11 @@ const Nav = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    console.log(e);
   };
 
   return (
-    <nav className="nav flex sticky bg-slate-900 top-0 w-full justify-between p-8">
+    <nav className="nav flex sticky bg-slate-900 top-0 w-full justify-between p-8 ">
       <div className="flex place-items-center">
         <img className="size-10" src={newsLight} alt="News icon" />
         <h1 className="pl-2 font-mono">NewsJSX</h1>
@@ -38,6 +38,5 @@ const Nav = () => {
     </nav>
   );
 };
-
 
 export default Nav;

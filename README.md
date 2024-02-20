@@ -1,5 +1,10 @@
 # NewsJSX
 
+> ## Web View
+![Preload with Apple](public/images/news1.png)
+![Searched for Tesla news](public/images/news2.png)
+
+
 How to get started?
 
 > 1. Create an account @NewsApi 
